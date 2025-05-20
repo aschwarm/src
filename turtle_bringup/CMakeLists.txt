@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(my_interfaces)
+project(turtle_bringup)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,13 +11,9 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-find_package(rosidl_default_generators REQUIRED)
-rosidl_generate_interfaces(${PROJECT_NAME}
-   "msg/Turtle.msg"
-   "msg/TurtleArray.msg"
-   "srv/CatchTurtle.srv"
- )
-
-ament_export_dependencies(rosidl_default_runtime)
+install(DIRECTORY
+  launch config
+  DESTINATION share/${PROJECT_NAME}/
+)
 
 ament_package()
