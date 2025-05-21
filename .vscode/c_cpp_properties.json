@@ -10,7 +10,8 @@
         "/opt/ros/jazzy/include/**",
         "/home/adam/ros2_workspace/src/my_interfaces/include/**",
         "/home/adam/ros2_workspace/src/turtlesim_catch_them_all/include/**",
-        "/usr/include/**"
+        "/usr/include/**",
+        "/home/adam/ros2_workspace/install/turtle_interfaces/include/**"
       ],
       "name": "ROS",
       "intelliSenseMode": "gcc-x64",

@@ -3,4 +3,6 @@
     </node>
     <node pkg="turtlesim_catch_them_all" exec="turtle_controller">
     </node>
+        <node pkg="turtlesim_catch_them_all" exec="turtle_spawner">
+    </node>
 </launch>

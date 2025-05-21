@@ -58,7 +58,7 @@ class TurtleControllerNode : public rclcpp::Node
         float dist_x = this->target_x_ - this->current_pose_->x;
         float dist_y = this->target_y_ - this->current_pose_->y;
 
-        float distance = sqrt(dist_x*dist_x + dist_y * dist_y);
+        float distance = std::sqrt(dist_x*dist_x + dist_y * dist_y);
 
         auto cmd = geometry_msgs::msg::Twist();
 
@@ -69,7 +69,7 @@ class TurtleControllerNode : public rclcpp::Node
 
             
             // Orientation command
-            float goal_theta = atan2(dist_y, dist_x);
+            float goal_theta = std::atan2(dist_y, dist_x);
             float diff_angle = goal_theta - this->current_pose_->theta;
             
             // Normalize the angle
