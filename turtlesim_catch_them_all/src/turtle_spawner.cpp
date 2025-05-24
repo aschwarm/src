@@ -16,9 +16,12 @@ class TurtleSpawnerNode : public rclcpp::Node
         TurtleSpawnerNode() : Node("turtle_spawner"), turtleCounter(0)
         {
             this->turtlePrefix = "target";
+            this->declare_parameter("spawn_frequency", 1.0);
+
+            spawn_frequency_ = this->get_parameter("spawn_frequency").as_double();
             
             spawn_client_ = this->create_client<turtlesim::srv::Spawn>("/spawn");
-            spawn_timer_ = this->create_wall_timer(std::chrono::duration<double>(3.0), 
+            spawn_timer_ = this->create_wall_timer(std::chrono::duration<double>(spawn_frequency_), 
                             std::bind(&TurtleSpawnerNode::spawnNewTurtle, this));
 
             alive_turtle_publisher_ = this->create_publisher<turtle_interfaces::msg::TurtleArray>("alive_turtles",10);
@@ -46,6 +49,8 @@ class TurtleSpawnerNode : public rclcpp::Node
 
     rclcpp::Service<turtle_interfaces::srv::CatchTurtle>::SharedPtr catch_turtle_service_;
     rclcpp::Client<turtlesim::srv::Kill>::SharedPtr kill_client_;
+
+    double spawn_frequency_;
 
     void spawnNewTurtle()
     {

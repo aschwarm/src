@@ -4,5 +4,6 @@
     <node pkg="turtlesim_catch_them_all" exec="turtle_controller">
     </node>
     <node pkg="turtlesim_catch_them_all" exec="turtle_spawner">
+        <param from="$(find-pkg-share turtle_bringup)/config/turtle_catch_app.yaml" />
     </node>
 </launch>
